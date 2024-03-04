@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Fundamental</title>
+</head>
+<body>
+
+    <header>
+        <h1>Analisis Fundamental</h1>
+    </header>
+
+    <div>
+        <input type="radio" id="single-select" name="selec" value="single_quarter" checked="checked"
+            onclick="searchQuarter()">
+        <label for="single-select">Buscar Trimestre</label>
+        <input type="radio" id="all-select" name="selec" value="check_all_quarters" 
+            onclick="yearHistory()">
+        <label for="all-select">Historial Anual</label>
+        <input type="radio" id="compare-select" name="selec" value="compare_quarters" 
+            onclick="yearCompare()">
+        <label for="compare-select">Comparar Fibras</label>
+    </div>
+
+    <br>
+
+    <div>
+        <form action="/" method="post">
+            <h3>Buscar por trimestre/año</h3>
+            <label for="fibras-select">FIBRA </label>
+            <select name="fibras" id="fibras-select">
+                <option value="">--Seleccione una opcion--</option>
+                {% for x in reit %}
+                    <option value="{{ x }}">{{ x }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="year-select">Año </label>
+            <select name="year" id="year-select">
+                <option value="">--Seleccione una opcion--</option>
+                {% for x in year %}
+                    <option value="{{ x }}">{{ x }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="q-select">Trimestre </label>
+            <select name="q" id="q-select">
+                <option value="">--Seleccione una opcion--</option>
+                <option value="q1">Trimestre 1</option>
+                <option value="q2">Trimestre 2</option>
+                <option value="q3">Trimestre 3</option>
+                <option value="q4">Trimestre 4</option>
+            </select>
+
+            <br>
+
+            <button type="submit" id="search_one">Buscar</button>
+        </form>
+    </div>
+
+    <br>
+
+    <div id="compare_div">
+        <form action="/" method="post">
+            <h3>Comparar Fibras</h3>
+            <p>Seleccionar Fibra</p>
+            <label for="fibras-select">FIBRA </label>
+            <select name="fibras_1" id="fibras-select" disabled="true">
+                <option value="">----------</option>
+                {% for x in reit %}
+                    <option value="{{ x }}">{{ x }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+
+            <p>Comparar con</p>
+            <label for="fibras-select">FIBRA </label>
+            <select name="fibras_2" id="fibras-select" disabled="true">
+                <option value="">----------</option>
+                {% for x in reit %}
+                    <option value="{{ x }}">{{ x }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+
+            <button type="submit" disabled="true">Buscar</button>
+        </form>
+    </div>
+
+    <script>
+        function searchQuarter() {
+            var x = document.getElementById("compare_div").getElementsByTagName('*');
+            for(var i = 0; i<x.length; i++){
+                x[i].disabled = true;
+            }
+            document.getElementById("fibras-select").disabled = false;
+            document.getElementById("year-select").disabled = false;
+            document.getElementById("q-select").disabled = false;
+            document.getElementById("search_one").disabled = false;
+        }
+
+        function yearHistory() {
+            var x = document.getElementById("compare_div").getElementsByTagName('*');
+            for(var i = 0; i<x.length; i++){
+                x[i].disabled = true;
+            }
+            document.getElementById("fibras-select").disabled = false;
+            document.getElementById("year-select").disabled = false;
+            document.getElementById("q-select").disabled = true;
+            document.getElementById("search_one").disabled = false;
+        }
+
+        function yearCompare() {
+            document.getElementById("fibras-select").disabled = true;
+            document.getElementById("year-select").disabled = true;
+            document.getElementById("q-select").disabled = true;
+            document.getElementById("search_one").disabled = true;
+
+            var x = document.getElementById("compare_div").getElementsByTagName('*');
+            for(var i = 0; i<x.length; i++){
+                x[i].disabled = false;
+            }
+        }
+
+    </script>
+</body>
+</html>

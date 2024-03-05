@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from bd_reits import reits
+from process import MainClass
 
 app = Flask(__name__)
 
@@ -23,20 +24,30 @@ def index():
         try:
             try:
                 get_reit = request.form['fibras']
-                get_year = request.form['year']
+                get_year = int(request.form['year'])
                 get_quarter = request.form['q']
 
-                print (get_reit, get_year, get_quarter)
+                upper_q = get_quarter.upper()
+
+                single_reit_process = MainClass.single_reit(get_reit,
+                                                            get_year,
+                                                            get_quarter)
+
+                return render_template('search_reit.html', reit_name=get_reit,
+                                       quarter=upper_q,
+                                       process=single_reit_process)       
             except:
                 get_reit = request.form['fibras']
                 get_year = request.form['year']
 
-                print (get_reit, get_year)
+                return render_template('reit_history.html',reit=get_reit,
+                                                        year=get_year)
         except:
             get_first = request.form['fibras_1']
             get_second = request.form['fibras_2']
 
-            print (get_first, get_second)
+            return render_template('search_compare.html', first=get_first,
+                                                        second=get_second)
 
     return render_template('index.html',reit=reit_list,
                                         year=year_list)

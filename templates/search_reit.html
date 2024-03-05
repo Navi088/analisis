@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Fibra</title>
+</head>
+<body>
+
+    <a href="{{ url_for('index') }}">Regresar</a>
+
+    <h1>{{ reit_name }} {{ quarter }}</h1>
+
+    <div>
+        <h4>Ingresos</h4>
+        <p>Inresos totales: {{ process[0][0] }}</p>
+        <p>NOI: {{ process[0][1] }}</p>
+        <p>FFO: {{ process[0][2] }}</p>
+        <p>AFFO: {{ process[0][3] }}</p>
+        <p>Ingresos MXN: {{ process[0][4] }} %</p>
+        <p>Ingresos USD: {{ process[0][5] }} %</p>
+        <p>Activos totales: {{ process[0][6] }}</p>
+        <p>Total de patrimonio: {{ process[0][7] }}</p>
+    </div>
+
+    <br>
+
+    <div>
+        <h4>Deuda</h4>
+        <p>Tasa fija: {{ process[1][0] }} %</p>
+        <p>Tasa variable: {{ process[1][1] }} %</p>
+        <p>Servicio de deuda: {{ process[1][2] }} %</p>
+        <p>Deuda en dolares: {{ process[1][3] }} %</p>
+        <p>Deuda total: {{ process[1][4] }}</p>
+    </div>
+
+    <br>
+
+    <div>
+        <h4>Ocupacion</h4>
+        <p>Area bruta rentable: {{ process[2][0] }} m2</p>
+        <p>Margen ABR: {{ process[2][1] }} %</p>
+    </div>
+
+    <br>
+
+    <div>
+        <h4>Analisis</h4>
+        <p>NAV: {{ process[3][0] }}</p>
+        <p>Precio al cierre del trimestre: {{ process[3][1] }}</p>
+        <p>CBFIs en circulacion: {{ process[3][2] }}</p>
+    </div>
+
+</body>
+</html>

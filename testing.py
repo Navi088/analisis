@@ -1,16 +1,17 @@
 from bd_reits import reits
 
-# for x in reits['funo']:
-#     print (x)
+# BUSCAR FIBRAS
+income_list = reits['FUNO'][2023]['q1']['income']
+income = list(income_list)
 
+debt_list = reits['FUNO'][2023]['q1']['debt']
+debt = list(debt_list)
 
-# for x in reits['funo'][2023]:
-#     print (x)
+occupancy_list = reits['FUNO'][2023]['q1']['occupancy']
+occupancy = list(occupancy_list)
 
+analysis_list = reits['FUNO'][2023]['q1']['analysis']
+analysis = list(analysis_list)
 
-# for x in reits['funo'][2023]['q2']:
-#     print (x)
-
-
-# for x in list(reits['funo'][2023]['q2']['income']):
-#     print (x)
+result_list = [income, debt, occupancy, analysis]
+print (result_list[3][1])

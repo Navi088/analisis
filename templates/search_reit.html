@@ -13,14 +13,14 @@
 
     <div>
         <h4>Ingresos</h4>
-        <p>Inresos totales: {{ process[0][0] }}</p>
-        <p>NOI: {{ process[0][1] }}</p>
-        <p>FFO: {{ process[0][2] }}</p>
-        <p>AFFO: {{ process[0][3] }}</p>
+        <p>Inresos totales: ${{ process[0][0] }}</p>
+        <p>NOI: ${{ process[0][1] }}</p>
+        <p>FFO: ${{ process[0][2] }}</p>
+        <p>AFFO: ${{ process[0][3] }}</p>
         <p>Ingresos MXN: {{ process[0][4] }} %</p>
         <p>Ingresos USD: {{ process[0][5] }} %</p>
-        <p>Activos totales: {{ process[0][6] }}</p>
-        <p>Total de patrimonio: {{ process[0][7] }}</p>
+        <p>Activos totales: ${{ process[0][6] }}</p>
+        <p>Total de patrimonio: ${{ process[0][7] }}</p>
     </div>
 
     <br>
@@ -31,7 +31,7 @@
         <p>Tasa variable: {{ process[1][1] }} %</p>
         <p>Servicio de deuda: {{ process[1][2] }} %</p>
         <p>Deuda en dolares: {{ process[1][3] }} %</p>
-        <p>Deuda total: {{ process[1][4] }}</p>
+        <p>Deuda total: ${{ process[1][4] }}</p>
     </div>
 
     <br>
@@ -47,8 +47,74 @@
     <div>
         <h4>Analisis</h4>
         <p>NAV: {{ process[3][0] }}</p>
-        <p>Precio al cierre del trimestre: {{ process[3][1] }}</p>
+        <p>Precio al cierre del trimestre: ${{ process[3][1] }}</p>
         <p>CBFIs en circulacion: {{ process[3][2] }}</p>
+    </div>
+
+    <br>
+
+    <!-- CHARTS.JS -->
+        <!-- PIE CHART -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <div>
+        <canvas id="pieChart" width="30" height="30"></canvas>
+
+        <script>
+            var labs = ["Ingreso", "Deuda"]
+            var backColors = ["blue", "gray"]
+            var vals = [ {{ process[4][0] | safe }}, {{ process[4][1] | safe }}]
+            var ctx = document.getElementById("pieChart").getContext("2d")
+            var lineChart = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: labs,
+                    datasets: [{
+                        backgroundColor: backColors,
+                        data: vals
+                        }]
+                      },
+                    options: {
+                        title: {
+                            display: true,
+                            text: "{{ process[4][2] }}"
+                        }
+                    }
+                });
+        </script>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <!-- BAR CHART -->
+        <canvas id="myBarChart" width="70" height="70" ></canvas>
+
+        <script>
+            var barColor = ["green"];
+            var x = [{{ process[5][0] }}];
+            var y = ['{{ process[5][1] }}'];
+            
+            var ctx = document.getElementById("myBarChart").getContext("2d")
+            
+            var lineChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: y,
+                    datasets: [{
+                        backgroundColor: barColor,
+                        data: x
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: "Margen FFO"
+                    }
+                  }
+                });
+        </script>
     </div>
 
 </body>

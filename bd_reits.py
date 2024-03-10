@@ -10,7 +10,7 @@ reits = {
                     '78.00',      #INGRESOS MXN
                     '22.00',      #INGRESOS USD
                     '336,637,671.00',#ACTIVOS TOTALES
-                    '2,878,600.00',#TOTAL DE PATRIMONIO
+                    '189,029,620.00',#TOTAL DE PATRIMONIO
                 ],
                 'debt': [
                     '63.00', #TASA FIJA

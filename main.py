@@ -38,10 +38,15 @@ def index():
                                        process=single_reit_process)       
             except:
                 get_reit = request.form['fibras']
-                get_year = request.form['year']
+                get_year = int(request.form['year'])
+
+                yearly_search = MainClass.reit_history(get_reit, get_year)
+                get_quarter_list = yearly_search[0]
 
                 return render_template('reit_history.html',reit=get_reit,
-                                                        year=get_year)
+                                        year=get_year, qua=get_quarter_list,
+                                                        ys=yearly_search)
+        
         except:
             get_first = request.form['fibras_1']
             get_second = request.form['fibras_2']

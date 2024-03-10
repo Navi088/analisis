@@ -1,0 +1,7 @@
+#myTable { width: 100%; }
+#qtys { text-align: center; }
+#curVal { text-align: right; }
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

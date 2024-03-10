@@ -4,14 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial Anual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reit_history_layout.css') }}">
 </head>
 <body>
 
     <a href="{{ url_for('index') }}">Regresar</a>
 
-    <header>Nomnre de la FIBRA</header>
+    <h1>{{ reit }}</h1>
 
-    <h4>Haz llegado al historial anual de una fibra</h4>
-    
+    <h4>Periodo: {{ year }}</h4>
+
+    <table id="myTable">
+        <thead style="background: rgba(0,81,255,0.352);">
+        </thead>        
+        <tbody>
+            <!-- TOTAL INCOMES -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Ingresos Totales</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][0] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][0] }} %</th>
+            </tr> 
+            <!-- NOI  -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Rentabilidad de inversion (NOI)</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][1] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][1] }} %</th>
+            </tr> 
+            <!-- FFO -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Fondos generados en operacion (FFO)</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][2] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][2] }} %</th>
+            </tr> 
+            <!-- AFFO -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Fondos ajustados de operaciones (AFFO)</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][3] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][3] }} %</th>
+            </tr> 
+            <!-- MXN INCOMES -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Ingresos MXN</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">{{ ys[loop.index][4] }} %</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][4] }} %</th>
+            </tr> 
+            <!-- USD INCOMES -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Ingresos USD</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">{{ ys[loop.index][5] }} %</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][5] }} %</th>
+            </tr> 
+            <!-- TOTAL ASSETS -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Activos totales</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][6] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][6] }} %</th>
+            </tr> 
+            <!-- TOTAL EQUITY -->
+            <tr>
+                <th colspan="2" style="background: rgba(0,81,255,0.352);">Patriomonio total</th>
+            </tr>
+            <tr id="mainTr">
+                {% for x in qua %}
+                    <tr id="myLoopTr">
+                        <td>{{ x }}</td>
+                        <td id="qtys">$ {{ ys[loop.index][7] }}</td>
+                    </tr>
+                {% endfor %}
+                <th id="curVal" colspan="2">Valor actual: {{ ys[5][7] }} %</th>
+            </tr> 
+        </tbody>
+    </table>
+       
 </body>
 </html>

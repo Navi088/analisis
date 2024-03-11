@@ -140,6 +140,5 @@ class MainClass:
             restult_list.append(lz)
 
         restult_list.append(list(round(df['Valor actual'], 2)))
-        print (restult_list)
 
         return restult_list

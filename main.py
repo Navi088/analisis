@@ -21,8 +21,14 @@ for x in reits.keys():
 @app.route('/', methods=['GET','POST'])
 def index():
     if request.method=='POST':
-        try:
-            try:
+        sel = request.form['selec']
+
+        if sel == 'single_quarter':
+            if request.form['fibras']=="" or request.form['year']=="" or request.form['q']=="":
+                return render_template('index.html',reit=reit_list,
+                                        year=year_list, error=True)
+
+            else:
                 get_reit = request.form['fibras']
                 get_year = int(request.form['year'])
                 get_quarter = request.form['q']
@@ -34,9 +40,15 @@ def index():
                                                             get_quarter)
 
                 return render_template('search_reit.html', reit_name=get_reit,
-                                       quarter=upper_q,
-                                       process=single_reit_process)       
-            except:
+                                        quarter=upper_q,
+                                        process=single_reit_process)
+         
+        if sel == 'check_all_quarters':
+            if request.form['fibras']=="" or request.form['year']=="":
+                return render_template('index.html',reit=reit_list,
+                                        year=year_list, error=True)
+
+            else:
                 get_reit = request.form['fibras']
                 get_year = int(request.form['year'])
 
@@ -46,13 +58,21 @@ def index():
                 return render_template('reit_history.html',reit=get_reit,
                                         year=get_year, qua=get_quarter_list,
                                                         ys=yearly_search)
-        
-        except:
-            get_first = request.form['fibras_1']
-            get_second = request.form['fibras_2']
+        if sel == 'compare_quarters':
+            if request.form['fibras_1']=="" or request.form['fibras_2']=="":
+                return render_template('index.html',reit=reit_list,
+                                        year=year_list, error=True)
 
-            return render_template('search_compare.html', first=get_first,
-                                                        second=get_second)
+            else:
+                get_first = request.form['fibras_1']
+                get_second = request.form['fibras_2']
+
+                if get_first == get_second:
+                    return render_template('index.html',reit=reit_list,
+                                        year=year_list, error=False)
+                else:
+                    return render_template('search_compare.html', first=get_first,
+                                                            second=get_second)
 
     return render_template('index.html',reit=reit_list,
                                         year=year_list)

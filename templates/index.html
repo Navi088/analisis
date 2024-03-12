@@ -12,21 +12,32 @@
     </header>
 
     <div>
-        <input type="radio" id="single-select" name="selec" value="single_quarter" checked="checked"
-            onclick="searchQuarter()">
-        <label for="single-select">Buscar Trimestre</label>
-        <input type="radio" id="all-select" name="selec" value="check_all_quarters" 
-            onclick="yearHistory()">
-        <label for="all-select">Historial Anual</label>
-        <input type="radio" id="compare-select" name="selec" value="compare_quarters" 
-            onclick="yearCompare()">
-        <label for="compare-select">Comparar Fibras</label>
-    </div>
-
-    <br>
-
-    <div>
         <form action="/" method="post">
+            <div>
+                <input type="radio" id="single-select" name="selec" value="single_quarter" checked="checked"
+                    onclick="searchQuarter()">
+                <label for="single-select">Buscar Trimestre</label>
+                <input type="radio" id="all-select" name="selec" value="check_all_quarters" 
+                    onclick="yearHistory()">
+                <label for="all-select">Historial Anual</label>
+                <input type="radio" id="compare-select" name="selec" value="compare_quarters" 
+                    onclick="yearCompare()">
+                <label for="compare-select">Comparar Fibras</label>
+            </div>
+
+            <br>
+
+            {% if error == True %}
+                <div>
+                    <p>Asegurese de ingresar los datos necesarios.</p>
+                </div>
+            {% endif %}
+            {% if error == False %}
+                <div>
+                    <p>No se puede comparar el mismo instrumento.</p>
+                </div>
+            {% endif %}
+
             <h3>Buscar por trimestre/año</h3>
             <label for="fibras-select">FIBRA </label>
             <select name="fibras" id="fibras-select">
@@ -56,37 +67,35 @@
             <br>
 
             <button type="submit" id="search_one">Buscar</button>
-        </form>
-    </div>
-
-    <br>
-
-    <div id="compare_div">
-        <form action="/" method="post">
-            <h3>Comparar Fibras</h3>
-            <p>Seleccionar Fibra</p>
-            <label for="fibras-select">FIBRA </label>
-            <select name="fibras_1" id="fibras-select" disabled="true">
-                <option value="">----------</option>
-                {% for x in reit %}
-                    <option value="{{ x }}">{{ x }}</option>
-                {% endfor %}
-            </select>
 
             <br>
 
-            <p>Comparar con</p>
-            <label for="fibras-select">FIBRA </label>
-            <select name="fibras_2" id="fibras-select" disabled="true">
-                <option value="">----------</option>
-                {% for x in reit %}
-                    <option value="{{ x }}">{{ x }}</option>
-                {% endfor %}
-            </select>
+            <div id="compare_div">
+                <h3>Comparar Fibras</h3>
+                <p>Seleccionar Fibra</p>
+                <label for="fibras-select">FIBRA </label>
+                <select name="fibras_1" id="fibras-select" disabled="true">
+                    <option value="">----------</option>
+                    {% for x in reit %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endfor %}
+                </select>
 
-            <br>
+                <br>
 
-            <button type="submit" disabled="true">Buscar</button>
+                <p>Comparar con</p>
+                <label for="fibras-select">FIBRA </label>
+                <select name="fibras_2" id="fibras-select" disabled="true">
+                    <option value="">----------</option>
+                    {% for x in reit %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <button type="submit" disabled="true">Buscar</button>
+            </div>
         </form>
     </div>
 

@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/compare_layout.css') }}">
     <title>Comparar FIBRAS</title>
 </head>
 <body>
     
     <a href="{{ url_for('index') }}">Regresar</a>
 
-    <header>Nombre de la FIBRA</header>
+    <header>Comparacion</header>
 
-    <h4>Haz llegado a donde se hara una comparacion entre dos fibras</h4>
+    <br>
+
+    <table id="my_compareTable">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>{{ first }}</th>
+                <th>{{ second }}</th>
+            </tr>
+            {% for x in elem %}
+                <tr>
+                    <td>{{ x }}</td>
+                    <td id="percents">{{ fib[0][loop.index -1] }} %</td>
+                    <td id="percents">{{ fib[1][loop.index -1] }} %</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </body>
 </html>

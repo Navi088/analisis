@@ -1,0 +1,6 @@
+#my_compareTable { width: 100%; }
+#percents {text-align: center;}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

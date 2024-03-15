@@ -142,3 +142,28 @@ class MainClass:
         restult_list.append(list(round(df['Valor actual'], 2)))
 
         return restult_list
+    
+
+    def main_function(one, two, names):
+        elements = ['Ingresos Totales','NOI','FFO','AFFO','Ingresos MXN','Ingresos USD',
+        'Activos Totales','Total de Patrimonio','Tasa fija','Tasa variable','Servisio de deuda',
+        'Deuda en dolares','Deuda Total','ABR','Margen ABR','NAV','Precio de cierre','CFBIs circulantes']
+        fibra1_last = one[0]
+        fibra1_first = two[0]
+        
+        fibra2_last = one[1]
+        fibra2_first = two[1]
+        
+        data = {
+            "f1Q1": fibra1_first,
+            "f1Qx": fibra1_last,
+            "f2Q1": fibra2_first,
+            "f2Qx": fibra2_last
+        }
+        
+        pd.options.display.float_format = '{:,.2f} %'.format
+        df = pd.DataFrame(data, index=elements)
+        df[names[0]] = round(((df["f1Qx"] - df["f1Q1"])*100)/df["f1Q1"], 2)
+        df[names[1]] = round(((df["f2Qx"] - df["f2Q1"])*100)/df["f2Q1"], 2)
+        
+        return df

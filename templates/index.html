@@ -26,6 +26,8 @@
                 <label for="compare-select">Comparar Fibras</label>
             </div>
 
+            <br>
+
             {% if error == True %}
                 <br>
                 <div id="errorDiv">
@@ -40,60 +42,65 @@
             {% endif %}
 
             <div id="mySelector">
-                <h3>Buscar por trimestre/año</h3>
-                <label for="fibras-select"><b>FIBRA</b> </label>
-                <select name="fibras" id="fibras-select">
-                    <option value="">--Seleccione una opcion--</option>
-                    {% for x in reit %}
-                        <option value="{{ x }}">{{ x }}</option>
-                    {% endfor %}
-                </select>
+                <div>
+                    <h3>Buscar por trimestre/año</h3>
+                    <label for="fibras-select"><b>FIBRA</b> </label>
+                    <select name="fibras" id="fibras-select">
+                        <option value="">--Seleccione una opcion--</option>
+                        {% for x in reit %}
+                            <option value="{{ x }}">{{ x }}</option>
+                        {% endfor %}
+                    </select>
 
-                <label for="year-select"><b>Año</b> </label>
-                <select name="year" id="year-select">
-                    <option value="">--Seleccione una opcion--</option>
-                    {% for x in year %}
-                        <option value="{{ x }}">{{ x }}</option>
-                    {% endfor %}
-                </select>
+                    <label for="year-select"><b>Año</b> </label>
+                    <select name="year" id="year-select">
+                        <option value="">--Seleccione una opcion--</option>
+                        {% for x in year %}
+                            <option value="{{ x }}">{{ x }}</option>
+                        {% endfor %}
+                    </select>
 
-                <label for="q-select" id="qSel"><b>Trimestre</b> </label>
-                <select name="q" id="q-select">
-                    <option value="">--Seleccione una opcion--</option>
-                    <option value="q1">Trimestre 1</option>
-                    <option value="q2">Trimestre 2</option>
-                    <option value="q3">Trimestre 3</option>
-                    <option value="q4">Trimestre 4</option>
-                </select>
-                
-                <br>
-                
-                <button type="submit" id="search_one">Buscar</button>
+                    <label for="q-select" id="qSel"><b>Trimestre</b> </label>
+                    <select name="q" id="q-select">
+                        <option value="">--Seleccione una opcion--</option>
+                        <option value="q1">Trimestre 1</option>
+                        <option value="q2">Trimestre 2</option>
+                        <option value="q3">Trimestre 3</option>
+                        <option value="q4">Trimestre 4</option>
+                    </select>
+
+                    <br>
+                    
+                    <button type="submit" id="search_one">Buscar</button>
+                </div>
             </div>
 
+
             <div id="compare_div">
-                <h3>Comparar Fibras</h3>
-                <p>Seleccionar Fibra</p>
-                <label for="fibras-select"><b>FIBRA</b> </label>
-                <select name="fibras_1" id="fibras-select" disabled="true">
-                    <option value="">----------</option>
-                    {% for x in reit %}
-                        <option value="{{ x }}">{{ x }}</option>
-                    {% endfor %}
-                </select>
+                <div>
+                    <h3>Comparar Fibras</h3>
+                    <p>Seleccionar Fibra</p>
+                    <label for="fibras-select"><b>FIBRA</b> </label>
+                    <select name="fibras_1" id="fibras-select" disabled="true">
+                        <option value="">----------</option>
+                        {% for x in reit %}
+                            <option value="{{ x }}">{{ x }}</option>
+                        {% endfor %}
+                    </select>
 
-                <p>Comparar con</p>
-                <label for="fibras-select"><b>FIBRA</b> </label>
-                <select name="fibras_2" id="fibras-select" disabled="true">
-                    <option value="">----------</option>
-                    {% for x in reit %}
-                        <option value="{{ x }}">{{ x }}</option>
-                    {% endfor %}
-                </select>
+                    <p>Comparar con</p>
+                    <label for="fibras-select"><b>FIBRA</b> </label>
+                    <select name="fibras_2" id="fibras-select" disabled="true">
+                        <option value="">----------</option>
+                        {% for x in reit %}
+                            <option value="{{ x }}">{{ x }}</option>
+                        {% endfor %}
+                    </select>
 
-                <br>
+                    <br>
 
-                <button type="submit" disabled="true">Buscar</button>
+                    <button type="submit" disabled="true">Buscar</button>
+                </div>
             </div>
         </form>
     </div>

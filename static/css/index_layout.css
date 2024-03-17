@@ -1,5 +1,28 @@
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
 body {
     margin: 10px;
+    background: linear-gradient(rgba(5, 7, 12, 0.55), rgba(5,7,12,0.55)), url(/static/css/img/indexback.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+header {
+    font-family: 'Segoe UI';
+    color: rgb(233, 152, 22);
+}
+
+img {
+    min-height: 100vh;
+    background: no-repeat center center fixed;
+    background-size: cover;
 }
 
 #errorDiv {
@@ -21,32 +44,75 @@ body {
 
 
 #myRadio {
-    /* background-color: #519EE2; */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 450px;
     height: 80px;
     display: flex;
     align-items: center;
     border-radius: 10px;
+    color: white;
+    font-family: 'Segoe UI';
 }
 #myRadio label {
     padding-left: 10px;
 }
+#myRadio input {
+    accent-color: orangered;
+}
 
 
 #mySelector {
-    /* background-color: #519EE2; */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 450px;
-    height: 80px;
+    height: 100%;
     border-radius: 10px;
+    animation: fade-up 0.5s;
+}
+#mySelector div {
+    margin: 5px;
     display: grid;
+    color: white;
+    font-family: 'Segoe UI';
 }
 
 
 #compare_div {
     display: none;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
     width: 450px;
+    animation: fade-up 0.5s;
+}
+#compare_div div {
+    margin: 5px;
+    display: grid;
+    color: white;
+    font-family: 'Segoe UI';
 }
 
+button {
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+}
 
 @media (max-width: 1090px) {
     #errorDiv {
@@ -58,7 +124,7 @@ body {
         align-items: center;
     }
     #mySelector {
-        height: 90px;
+        height: 100%;
         width: 100%;
         display: grid;
     }

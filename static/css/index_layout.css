@@ -48,7 +48,7 @@ body {
 }
 
 
-@media (max-width: 350px) {
+@media (max-width: 1090px) {
     #errorDiv {
         width: 100%;
     }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_layout.css') }}">
     <title>Analisis Fundamental</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
 
     <div>
         <form action="/" method="post">
-            <div>
+            <div id="myRadio">
                 <input type="radio" id="single-select" name="selec" value="single_quarter" checked="checked"
                     onclick="searchQuarter()">
                 <label for="single-select">Buscar Trimestre</label>
@@ -25,55 +26,55 @@
                 <label for="compare-select">Comparar Fibras</label>
             </div>
 
-            <br>
-
             {% if error == True %}
-                <div>
-                    <p>Asegurese de ingresar los datos necesarios.</p>
+                <br>
+                <div id="errorDiv">
+                    <p>Ingresa los datos necesarios.</p>
                 </div>
             {% endif %}
             {% if error == False %}
-                <div>
+                <br>
+                <div id="errorDiv">
                     <p>No se puede comparar el mismo instrumento.</p>
                 </div>
             {% endif %}
 
-            <h3>Buscar por trimestre/año</h3>
-            <label for="fibras-select">FIBRA </label>
-            <select name="fibras" id="fibras-select">
-                <option value="">--Seleccione una opcion--</option>
-                {% for x in reit %}
-                    <option value="{{ x }}">{{ x }}</option>
-                {% endfor %}
-            </select>
+            <div id="mySelector">
+                <h3>Buscar por trimestre/año</h3>
+                <label for="fibras-select"><b>FIBRA</b> </label>
+                <select name="fibras" id="fibras-select">
+                    <option value="">--Seleccione una opcion--</option>
+                    {% for x in reit %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endfor %}
+                </select>
 
-            <label for="year-select">Año </label>
-            <select name="year" id="year-select">
-                <option value="">--Seleccione una opcion--</option>
-                {% for x in year %}
-                    <option value="{{ x }}">{{ x }}</option>
-                {% endfor %}
-            </select>
+                <label for="year-select"><b>Año</b> </label>
+                <select name="year" id="year-select">
+                    <option value="">--Seleccione una opcion--</option>
+                    {% for x in year %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endfor %}
+                </select>
 
-            <label for="q-select">Trimestre </label>
-            <select name="q" id="q-select">
-                <option value="">--Seleccione una opcion--</option>
-                <option value="q1">Trimestre 1</option>
-                <option value="q2">Trimestre 2</option>
-                <option value="q3">Trimestre 3</option>
-                <option value="q4">Trimestre 4</option>
-            </select>
-
-            <br>
-
-            <button type="submit" id="search_one">Buscar</button>
-
-            <br>
+                <label for="q-select" id="qSel"><b>Trimestre</b> </label>
+                <select name="q" id="q-select">
+                    <option value="">--Seleccione una opcion--</option>
+                    <option value="q1">Trimestre 1</option>
+                    <option value="q2">Trimestre 2</option>
+                    <option value="q3">Trimestre 3</option>
+                    <option value="q4">Trimestre 4</option>
+                </select>
+                
+                <br>
+                
+                <button type="submit" id="search_one">Buscar</button>
+            </div>
 
             <div id="compare_div">
                 <h3>Comparar Fibras</h3>
                 <p>Seleccionar Fibra</p>
-                <label for="fibras-select">FIBRA </label>
+                <label for="fibras-select"><b>FIBRA</b> </label>
                 <select name="fibras_1" id="fibras-select" disabled="true">
                     <option value="">----------</option>
                     {% for x in reit %}
@@ -81,10 +82,8 @@
                     {% endfor %}
                 </select>
 
-                <br>
-
                 <p>Comparar con</p>
-                <label for="fibras-select">FIBRA </label>
+                <label for="fibras-select"><b>FIBRA</b> </label>
                 <select name="fibras_2" id="fibras-select" disabled="true">
                     <option value="">----------</option>
                     {% for x in reit %}
@@ -105,8 +104,12 @@
             for(var i = 0; i<x.length; i++){
                 x[i].disabled = true;
             }
+            document.getElementById("mySelector").style.display = "grid";
+            document.getElementById("compare_div").style.display = "none";
             document.getElementById("fibras-select").disabled = false;
             document.getElementById("year-select").disabled = false;
+            document.getElementById("qSel").style.display = "grid";
+            document.getElementById("q-select").style.display = "grid";
             document.getElementById("q-select").disabled = false;
             document.getElementById("search_one").disabled = false;
         }
@@ -116,13 +119,19 @@
             for(var i = 0; i<x.length; i++){
                 x[i].disabled = true;
             }
+            document.getElementById("mySelector").style.display = "grid";
+            document.getElementById("compare_div").style.display = "none";
             document.getElementById("fibras-select").disabled = false;
             document.getElementById("year-select").disabled = false;
+            document.getElementById("qSel").style.display = "none";
             document.getElementById("q-select").disabled = true;
+            document.getElementById("q-select").style.display = "none";
             document.getElementById("search_one").disabled = false;
         }
 
         function yearCompare() {
+            document.getElementById("mySelector").style.display = "none";
+            document.getElementById("compare_div").style.display = "grid";
             document.getElementById("fibras-select").disabled = true;
             document.getElementById("year-select").disabled = true;
             document.getElementById("q-select").disabled = true;

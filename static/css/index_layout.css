@@ -1,0 +1,68 @@
+body {
+    margin: 10px;
+}
+
+#errorDiv {
+    background-color: #FBCEB1;
+    width: 440px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #9e1b32;
+}
+#myCloseButton {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    border-style: none;
+}
+
+
+#myRadio {
+    /* background-color: #519EE2; */
+    width: 450px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+#myRadio label {
+    padding-left: 10px;
+}
+
+
+#mySelector {
+    /* background-color: #519EE2; */
+    width: 450px;
+    height: 80px;
+    border-radius: 10px;
+    display: grid;
+}
+
+
+#compare_div {
+    display: none;
+    width: 450px;
+}
+
+
+@media (max-width: 350px) {
+    #errorDiv {
+        width: 100%;
+    }
+    #myRadio {
+        height: 90px;
+        width: 100%;
+        align-items: center;
+    }
+    #mySelector {
+        height: 90px;
+        width: 100%;
+        display: grid;
+    }
+    #compare_div {
+        width: 100%;
+    }
+}
